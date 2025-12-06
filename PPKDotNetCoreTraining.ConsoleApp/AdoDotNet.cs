@@ -185,7 +185,38 @@ namespace PPKDotNetCoreTraining.ConsoleApp
 
             int result = cmd.ExecuteNonQuery();
 
-            Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
+            Console.WriteLine(result == 1 ? "Data updated" : "Data updating failed");
+
+            SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
+            DataTable dt2 = new DataTable();
+            adapter2.Fill(dt2);
+
+            connection.Close();
+        }
+
+        public void Delete()
+        {
+            Console.WriteLine("Enter blog id to delete :");
+            string id = Console.ReadLine();
+
+            
+
+
+            string query = $@"DELETE FROM [dbo].[Tbl_blog]
+      WHERE blogId = @blogId";
+
+
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@blogId", id);
+           
+
+            int result = cmd.ExecuteNonQuery();
+
+            Console.WriteLine(result == 1 ? "Data deleted" : "Data deletetion failed");
 
             SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
             DataTable dt2 = new DataTable();
