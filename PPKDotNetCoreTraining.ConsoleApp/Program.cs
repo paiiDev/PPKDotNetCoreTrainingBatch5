@@ -9,7 +9,8 @@ Console.WriteLine("Hello, World!");
 AdoDotNet adoDotNet = new AdoDotNet();
 //adoDotNet.Read();
 //adoDotNet.Create();
-adoDotNet.Edit();
+//adoDotNet.Edit();
+adoDotNet.Update();
 
 Console.ReadKey();
 

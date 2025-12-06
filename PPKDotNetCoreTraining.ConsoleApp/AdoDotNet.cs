@@ -149,5 +149,49 @@ namespace PPKDotNetCoreTraining.ConsoleApp
 
             connection.Close();
         }
+
+        public void Update()
+        {
+            Console.WriteLine("Blog id :");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("Title :");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Author :");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Content :");
+            string content = Console.ReadLine();
+
+
+            string query = $@"UPDATE [dbo].[Tbl_blog]
+   SET [blogTitle] = @blogTitle
+      ,[blogAuthor] = @blogAuthor
+      ,[blogContent] = @blogContent
+      ,[deleteFlag] = 0
+ WHERE blogId = @blogId";
+
+
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@blogId", id);
+            cmd.Parameters.AddWithValue("@blogTitle", title);
+            cmd.Parameters.AddWithValue("@blogAuthor", author);
+            cmd.Parameters.AddWithValue("@blogContent", content);
+
+            int result = cmd.ExecuteNonQuery();
+
+            Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
+
+            SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
+            DataTable dt2 = new DataTable();
+            adapter2.Fill(dt2);
+
+            connection.Close();
+        }
     }
 }
