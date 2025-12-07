@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,40 @@ namespace PPKDotNetCoreTraining.ConsoleApp
                 Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
             }
 
+        }
+
+        public void Edit()
+        {
+            Console.Write("Enter ID: ");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+            
+           
+
+            string query = $@"SELECT [blogId]
+      ,[blogTitle]
+      ,[blogAuthor]
+      ,[blogContent]
+      ,[deleteFlag]
+  FROM [dbo].[Tbl_blog] where blogId = @blogId";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+              var item = db.Query<BlogDataModel>(query, new BlogDataModel { blogId = id }).FirstOrDefault();
+
+
+                if(item is null)
+                {
+                    Console.WriteLine("Data not found");
+                    return;
+                }
+
+                Console.WriteLine("Blog ID: " + item.blogId);
+                Console.WriteLine("Blog ID: " + item.blogTitle);
+                Console.WriteLine("Blog ID: " + item.blogAuthor);
+                Console.WriteLine("Blog ID: " + item.blogContent);
+                Console.WriteLine("---------------------------");
+            }
         }
 
     }
