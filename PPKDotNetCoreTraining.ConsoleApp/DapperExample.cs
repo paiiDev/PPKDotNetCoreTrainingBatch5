@@ -145,5 +145,27 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             }
 
         }
+
+        public void Delete()
+        {
+            Console.WriteLine("Blog id :");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+
+
+            string query = $@"DELETE FROM [dbo].[Tbl_blog]
+      WHERE blogId = @blogId";
+
+            using(IDbConnection db =new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new BlogDataModel
+                {
+                    blogId = id
+                });
+
+                Console.WriteLine(result == 1 ? "Data deleted" : "Data deleting failed");
+            }
+
+        }
     }
 }

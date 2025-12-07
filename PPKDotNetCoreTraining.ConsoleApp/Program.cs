@@ -17,7 +17,8 @@ DapperExample dapper = new DapperExample();
 //dapper.Read();
 //dapper.Create("HIII", "p2k", "test dapper create");
 //dapper.Edit();
-dapper.Update();
+//dapper.Update();
+dapper.Delete();
 
 Console.ReadKey();
 
