@@ -6,12 +6,15 @@ using System.Data.SqlClient;
 Console.WriteLine("Hello, World!");
 //Console.ReadLine();
 
-AdoDotNet adoDotNet = new AdoDotNet();
+//AdoDotNet adoDotNet = new AdoDotNet();
 //adoDotNet.Read();
 //adoDotNet.Create();
 //adoDotNet.Edit();
 //adoDotNet.Update();
-adoDotNet.Delete();
+//adoDotNet.Delete();
+
+DapperExample dapper = new DapperExample();
+dapper.Read();
 
 Console.ReadKey();
 
