@@ -106,5 +106,44 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             }
         }
 
+        public void Update()
+        {
+            Console.WriteLine("Blog id :");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+
+            Console.WriteLine("Title :");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Author :");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Content :");
+            string content = Console.ReadLine();
+
+
+            string query = $@"UPDATE [dbo].[Tbl_blog]
+   SET [blogTitle] = @blogTitle
+      ,[blogAuthor] = @blogAuthor
+      ,[blogContent] = @blogContent
+      ,[deleteFlag] = 0
+ WHERE blogId = @blogId";
+
+            using(IDbConnection db = new SqlConnection(_connectionString))
+            {
+                int result = db.Execute(query, new BlogDataModel
+                {
+                    blogId = id,
+                    blogTitle = title,
+                    blogAuthor = author,
+                    blogContent = content
+                });
+
+                Console.WriteLine( result == 1 ? "Data updated": "Data updating failed");
+
+
+            }
+
+        }
     }
 }

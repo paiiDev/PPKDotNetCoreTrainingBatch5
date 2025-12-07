@@ -16,7 +16,8 @@ Console.WriteLine("Hello, World!");
 DapperExample dapper = new DapperExample();
 //dapper.Read();
 //dapper.Create("HIII", "p2k", "test dapper create");
-dapper.Edit();
+//dapper.Edit();
+dapper.Update();
 
 Console.ReadKey();
 
