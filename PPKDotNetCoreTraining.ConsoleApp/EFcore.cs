@@ -63,10 +63,10 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             Console.WriteLine("Blog ID: " + item.blogAuthor);
             Console.WriteLine("Blog ID: " + item.blogContent);
             Console.WriteLine("---------------------------");
-        
+
         }
 
-         public void Update()
+        public void Update()
         {
             Console.WriteLine("Blog id :");
             string string_id = Console.ReadLine();
@@ -83,17 +83,18 @@ namespace PPKDotNetCoreTraining.ConsoleApp
 
             AppDbContext db = new AppDbContext();
             var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.blogId == id);
-            if(item is null)
+            if (item is null)
             {
                 Console.WriteLine("Data no found");
             }
-            if (!string.IsNullOrEmpty(title)) {
+            if (!string.IsNullOrEmpty(title))
+            {
                 item.blogTitle = title;
             }
             if (!string.IsNullOrEmpty(author))
             {
                 item.blogAuthor = author;
-               
+
             }
             if (!string.IsNullOrEmpty(content))
             {
@@ -103,15 +104,31 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             db.Entry(item).State = EntityState.Modified;
             var result = db.SaveChanges();
 
-            Console.WriteLine( result == 1 ? "Data updated": "Data updating failed.");
-
-
-
-
+            Console.WriteLine(result == 1 ? "Data updated" : "Data updating failed.");
 
         }
 
+
+        public void Delete()
+        {
+            Console.WriteLine("Blog id :");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.blogId == id);
+            if (item is null)
+            {
+                Console.WriteLine("Data not found");
+                return;
+            }
+
+            db.Entry(item).State = EntityState.Deleted;
+            var result = db.SaveChanges();
+            Console.WriteLine(result == 1 ? "Data deleted" : "Data deletion failed");
+
         }
+    }
 
     }
 

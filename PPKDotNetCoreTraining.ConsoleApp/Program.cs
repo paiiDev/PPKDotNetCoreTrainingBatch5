@@ -24,8 +24,9 @@ EFcore eFcore = new EFcore();
 //eFcore.read();
 //eFcore.Create("EF core", "ppk", "Testring ef core");
 //eFcore.Edit();
-eFcore.Edit();
-eFcore.Update();
+//eFcore.Edit();
+//eFcore.Update();
+eFcore.Delete();
 
 Console.ReadKey();
 
