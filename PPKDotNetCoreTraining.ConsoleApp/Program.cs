@@ -13,12 +13,15 @@ Console.WriteLine("Hello, World!");
 //adoDotNet.Update();
 //adoDotNet.Delete();
 
-DapperExample dapper = new DapperExample();
+//DapperExample dapper = new DapperExample();
 //dapper.Read();
 //dapper.Create("HIII", "p2k", "test dapper create");
 //dapper.Edit();
 //dapper.Update();
-dapper.Delete();
+//dapper.Delete();
+
+EFcore eFcore = new EFcore();
+eFcore.read();
 
 Console.ReadKey();
 
