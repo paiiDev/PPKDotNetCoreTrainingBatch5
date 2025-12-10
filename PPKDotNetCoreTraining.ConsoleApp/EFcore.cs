@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using PPKDotNetCoreTraining.ConsoleApp.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace PPKDotNetCoreTraining.ConsoleApp
         public void read()
         {
             AppDbContext db = new AppDbContext();
-           var lst =  db.Blogs.Where(x => x.deleteFlag == false).ToList();
+            var lst = db.Blogs.Where(x => x.deleteFlag == false).ToList();
             foreach (var item in lst)
             {
                 Console.WriteLine(item.blogId);
@@ -41,7 +42,7 @@ namespace PPKDotNetCoreTraining.ConsoleApp
 
 
             Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
-            }
+        }
 
         public void Edit()
         {
@@ -50,21 +51,67 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             int id = int.Parse(string_id);
 
             AppDbContext db = new AppDbContext();
-            var item = db.Blogs.FirstOrDefault( x => x.blogId == id);
-                if (item is null)
-                {
-                    Console.WriteLine("Data not found");
-                    return;
-                }
-
-                Console.WriteLine("Blog ID: " + item.blogId);
-                Console.WriteLine("Blog ID: " + item.blogTitle);
-                Console.WriteLine("Blog ID: " + item.blogAuthor);
-                Console.WriteLine("Blog ID: " + item.blogContent);
-                Console.WriteLine("---------------------------");
+            var item = db.Blogs.FirstOrDefault(x => x.blogId == id);
+            if (item is null)
+            {
+                Console.WriteLine("Data not found");
+                return;
             }
+
+            Console.WriteLine("Blog ID: " + item.blogId);
+            Console.WriteLine("Blog ID: " + item.blogTitle);
+            Console.WriteLine("Blog ID: " + item.blogAuthor);
+            Console.WriteLine("Blog ID: " + item.blogContent);
+            Console.WriteLine("---------------------------");
+        
         }
 
-        
+         public void Update()
+        {
+            Console.WriteLine("Blog id :");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+
+            Console.WriteLine("Title :");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Author :");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Content :");
+            string content = Console.ReadLine();
+
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.blogId == id);
+            if(item is null)
+            {
+                Console.WriteLine("Data no found");
+            }
+            if (!string.IsNullOrEmpty(title)) {
+                item.blogTitle = title;
+            }
+            if (!string.IsNullOrEmpty(author))
+            {
+                item.blogAuthor = author;
+               
+            }
+            if (!string.IsNullOrEmpty(content))
+            {
+                item.blogContent = content;
+            }
+
+            db.Entry(item).State = EntityState.Modified;
+            var result = db.SaveChanges();
+
+            Console.WriteLine( result == 1 ? "Data updated": "Data updating failed.");
+
+
+
+
+
+        }
+
+        }
+
     }
 
