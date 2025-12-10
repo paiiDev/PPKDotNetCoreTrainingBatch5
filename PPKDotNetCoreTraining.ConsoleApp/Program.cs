@@ -22,7 +22,8 @@ Console.WriteLine("Hello, World!");
 
 EFcore eFcore = new EFcore();
 //eFcore.read();
-eFcore.Create("EF core", "ppk", "Testring ef core");
+//eFcore.Create("EF core", "ppk", "Testring ef core");
+eFcore.Edit();
 
 Console.ReadKey();
 

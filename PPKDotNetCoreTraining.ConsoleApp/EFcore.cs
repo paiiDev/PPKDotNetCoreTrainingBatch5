@@ -1,4 +1,5 @@
-﻿using PPKDotNetCoreTraining.ConsoleApp.Models;
+﻿using Dapper;
+using PPKDotNetCoreTraining.ConsoleApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,6 +43,28 @@ namespace PPKDotNetCoreTraining.ConsoleApp
             Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
             }
 
+        public void Edit()
+        {
+            Console.Write("Enter ID: ");
+            string string_id = Console.ReadLine();
+            int id = int.Parse(string_id);
+
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.FirstOrDefault( x => x.blogId == id);
+                if (item is null)
+                {
+                    Console.WriteLine("Data not found");
+                    return;
+                }
+
+                Console.WriteLine("Blog ID: " + item.blogId);
+                Console.WriteLine("Blog ID: " + item.blogTitle);
+                Console.WriteLine("Blog ID: " + item.blogAuthor);
+                Console.WriteLine("Blog ID: " + item.blogContent);
+                Console.WriteLine("---------------------------");
+            }
         }
+
+        
     }
 
