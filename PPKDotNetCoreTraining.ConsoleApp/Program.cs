@@ -21,7 +21,8 @@ Console.WriteLine("Hello, World!");
 //dapper.Delete();
 
 EFcore eFcore = new EFcore();
-eFcore.read();
+//eFcore.read();
+eFcore.Create("EF core", "ppk", "Testring ef core");
 
 Console.ReadKey();
 

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPKDotNetCoreTraining.ConsoleApp.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +23,25 @@ namespace PPKDotNetCoreTraining.ConsoleApp
                 Console.WriteLine("----------------");
             }
         }
+
+        public void Create(string title, string author, string content)
+        {
+            BlogDataModel blog = new BlogDataModel
+            {
+                blogTitle = title,
+                blogAuthor = author,
+                blogContent = content,
+                deleteFlag = false
+            };
+
+            AppDbContext db = new AppDbContext();
+            db.Blogs.Add(blog);
+            var result = db.SaveChanges();
+
+
+            Console.WriteLine(result == 1 ? "Data saved" : "Data saving failed");
+            }
+
+        }
     }
-}
+
