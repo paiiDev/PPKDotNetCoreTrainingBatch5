@@ -76,11 +76,7 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
                 item.BlogContent = blog.BlogContent;
 
             }
-            if (!bool.(blog.DeleteFlag))
-            {
-                item.DeleteFlag = blog.DeleteFlag;
-
-            }
+           
             _db.Entry(item).State = EntityState.Modified;
             _db.SaveChanges();
             return Ok(item);

@@ -1,0 +1,6 @@
+@DotNetBatch5.MinimalApi_HostAddress = http://localhost:5091
+
+GET {{DotNetBatch5.MinimalApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
