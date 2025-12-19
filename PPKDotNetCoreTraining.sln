@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch5.shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBatch5.MinimalApi", "DotNetBatch5.MinimalApi\DotNetBatch5.MinimalApi.csproj", "{284224F4-7983-4BD3-B882-3336F446CBE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBatch5.BirdsMinimalApi", "DotNetBatch5.BirdsMinimalApi\DotNetBatch5.BirdsMinimalApi.csproj", "{DBB125E4-E93A-457E-9379-C0CD7114A3BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurmeseAgriculture.RestApi", "BurmeseAgriculture.RestApi\BurmeseAgriculture.RestApi.csproj", "{82A8149D-27D5-4558-B374-9437B93A4574}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{284224F4-7983-4BD3-B882-3336F446CBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{284224F4-7983-4BD3-B882-3336F446CBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{284224F4-7983-4BD3-B882-3336F446CBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBB125E4-E93A-457E-9379-C0CD7114A3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBB125E4-E93A-457E-9379-C0CD7114A3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBB125E4-E93A-457E-9379-C0CD7114A3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBB125E4-E93A-457E-9379-C0CD7114A3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A8149D-27D5-4558-B374-9437B93A4574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A8149D-27D5-4558-B374-9437B93A4574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A8149D-27D5-4558-B374-9437B93A4574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A8149D-27D5-4558-B374-9437B93A4574}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
