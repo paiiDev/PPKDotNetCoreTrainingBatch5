@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetTrainingBatch5.RestApi.Controllers
 {
+
+    //Presentation
     public class BlogServiceController : Controller
     {
 
